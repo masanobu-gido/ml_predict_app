@@ -24,7 +24,7 @@ dbus-python==1.2.16
 
 distro==1.4.0
 
-duplicity==0.8.12.0
+duplicity==0.8.12.1612
 entrypoints==0.3
 fasteners==0.14.1
 fire==0.4.0
