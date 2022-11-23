@@ -112,7 +112,7 @@ tqdm==4.64.1
 typing-extensions==4.4.0
 
 
-ufw==0.36
+
 unattended-upgrades==0.1
 urllib3==1.25.8
 usb-creator==0.3.7
