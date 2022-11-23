@@ -110,7 +110,7 @@ torchmetrics==0.10.2
 torchvision==0.14.0
 tqdm==4.64.1
 typing-extensions==4.4.0
-ubuntu-advantage-tools==27.11.2
+
 ubuntu-drivers-common==0.0.0
 ufw==0.36
 unattended-upgrades==0.1
