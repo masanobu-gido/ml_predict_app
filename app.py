@@ -2,13 +2,19 @@ from flask import Flask, render_template, request, redirect, session
 import os
 import sys
 import pickle5
-import torch
-from torch import nn
+import numpy as np
 from PIL import Image
 from transforms import fishTransform
 from pathlib import Path
 
 app = Flask(__name__)
+
+class SoftMax(object):
+    def __init__(self):
+        pass
+
+    def __call__(self, input):
+        return np.exp(input) / np.exp(input).sum()
 
 class SaveImage(object):
     def __init__(self, image_file):
@@ -44,13 +50,14 @@ class MlModel(object):
         input = transformed_img.unsqueeze(0)
 
         # prediction
-        m = nn.Softmax(dim=1)
+        m = SoftMax()
         output = model(input)
-        output = m(output)
-        _, r = torch.max(output, 1)
+        output = output.detach().numpy()
+        output = m(output)[0]
+        r = np.argmax(output)
 
         result = self.class_names[r]
-        pred = output[0][r].item()
+        pred = output[r].item()
 
         print("予測結果：", result)
         print("予測確率：{:.3f}".format(pred))
@@ -88,4 +95,4 @@ def nokoshima_clf():
         return render_template("nokoshima_clf.html", result=None, pred=None)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)

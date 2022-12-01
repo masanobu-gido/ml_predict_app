@@ -1,4 +1,3 @@
-import torch
 from torchvision import transforms as T
 
 class fishTransform():
