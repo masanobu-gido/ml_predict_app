@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, redirect, session
-"""
 import os
 import sys
 import pickle5
 import numpy as np
 from PIL import Image
-from transforms import fishTransform
+#from transforms import fishTransform
 from pathlib import Path
-"""
+
 app = Flask(__name__)
 """
 class SoftMax(object):
@@ -78,10 +77,12 @@ def start():
 def detail():
         return render_template("detail.html")
 
-"""
+
 @app.route("/nokoshima_clf", methods=["GET", "POST"])
 def nokoshima_clf():
     if request.method == "POST":
+        pass
+        """
         image_file = request.files["image_file"]
         model = MlModel(model_type="nokoshima")
         print("img: ", image_file)
@@ -92,8 +93,9 @@ def nokoshima_clf():
          #   pass#os.remove("image/image.jpeg")
 
         return render_template("nokoshima_clf.html", result=result, pred=pred)
+        """
     else:
         return render_template("nokoshima_clf.html", result=None, pred=None)
-"""
+
 if __name__ == "__main__":
     app.run(debug=False)
