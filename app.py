@@ -4,11 +4,11 @@ import sys
 import pickle5
 import numpy as np
 from PIL import Image
-#from transforms import fishTransform
+from transforms import fishTransform
 from pathlib import Path
 
 app = Flask(__name__)
-"""
+
 class SoftMax(object):
     def __init__(self):
         pass
@@ -63,7 +63,7 @@ class MlModel(object):
         print("予測確率：{:.3f}".format(pred))
 
         return result, round(pred, 3)
-"""
+
 @app.route("/", methods=["GET", "POST"])
 def start():
     if request.method == "POST":
@@ -81,8 +81,7 @@ def detail():
 @app.route("/nokoshima_clf", methods=["GET", "POST"])
 def nokoshima_clf():
     if request.method == "POST":
-        pass
-        """
+
         image_file = request.files["image_file"]
         model = MlModel(model_type="nokoshima")
         print("img: ", image_file)
@@ -90,10 +89,10 @@ def nokoshima_clf():
         result, pred= model(image_file=image_file)
 
         #if os.path.isfile("image/image.jpeg"):
-         #   pass#os.remove("image/image.jpeg")
+        #   pass#os.remove("image/image.jpeg")
 
         return render_template("nokoshima_clf.html", result=result, pred=pred)
-        """
+
     else:
         return render_template("nokoshima_clf.html", result=None, pred=None)
 
