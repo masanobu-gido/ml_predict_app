@@ -16,13 +16,6 @@ class SoftMax(object):
     def __call__(self, input):
         return np.exp(input) / np.exp(input).sum()
 
-class SaveImage(object):
-    def __init__(self, image_file):
-        save_path = "./image/image.jpg"
-        self.save_path = Path(save_path)
-        img = Image.open(image_file)
-        img.save(save_path)
-
 class MlModel(object):
     def __init__(self, model_type):
         # choose model
@@ -38,11 +31,9 @@ class MlModel(object):
         
         model.eval()
 
-        # input image
-        #print(image_file)
-        #save_image = SaveImage(image_file)
-        #img = Image.open(save_image.save_path)
+        # input and save image
         img = Image.open(image_file)
+        img.save("image/image.jpg")
 
         # transfrom
         transform = fishTransform(resize=(256,256), mean=None, std=None)
@@ -89,8 +80,8 @@ def nokoshima_clf():
         #print("model: ", model)
         result, pred= model(image_file=image_file)
 
-        if os.path.isfile("image/image.jpg"):
-            os.remove("image/image.jpg")
+        #if os.path.isfile("image/image.jpg"):
+        #   os.remove("image/image.jpg")
 
         return render_template("nokoshima_clf.html", result=result, pred=pred)
 
@@ -98,4 +89,4 @@ def nokoshima_clf():
         return render_template("nokoshima_clf.html", result=None, pred=None)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
