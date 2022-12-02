@@ -40,9 +40,9 @@ class MlModel(object):
 
         # input image
         #print(image_file)
-        save_image = SaveImage(image_file)
-        img = Image.open(save_image.save_path)
-        #img = Image.open(image_file)
+        #save_image = SaveImage(image_file)
+        #img = Image.open(save_image.save_path)
+        img = Image.open(image_file)
 
         # transfrom
         transform = fishTransform(resize=(256,256), mean=None, std=None)
