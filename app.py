@@ -41,10 +41,11 @@ class MlModel(object):
 
         # input image
         #print(image_file)
-        #save_image = SaveImage(image_file)
-        #img = Image.open(save_image.save_path)
-        img = Image.open(image_file)
+        save_image = SaveImage(image_file)
+        img = Image.open(save_image.save_path)
+        #img = Image.open(image_file)
 
+        # transfrom
         transform = fishTransform(resize=(256,256), mean=None, std=None)
         transformed_img = transform(img, key='val')
         transformed_img = transformed_img.to('cpu')
@@ -60,8 +61,8 @@ class MlModel(object):
         result = self.class_names[r]
         pred = output[r].item()
 
-        print("予測結果：", result)
-        print("予測確率：{:.3f}".format(pred))
+        #print("予測結果：", result)
+        #print("予測確率：{:.3f}".format(pred))
 
         return result, round(pred, 3)
 
@@ -85,12 +86,12 @@ def nokoshima_clf():
 
         image_file = request.files["image_file"]
         model = MlModel(model_type="nokoshima")
-        print("img: ", image_file)
-        print("model: ", model)
+        #print("img: ", image_file)
+        #print("model: ", model)
         result, pred= model(image_file=image_file)
 
-        #if os.path.isfile("image/image.jpeg"):
-        #   pass#os.remove("image/image.jpeg")
+        if os.path.isfile("image/image.jpg"):
+            os.remove("image/image.jpg")
 
         return render_template("nokoshima_clf.html", result=result, pred=pred)
 
