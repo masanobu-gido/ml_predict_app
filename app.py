@@ -47,6 +47,7 @@ class MlModel(object):
 
         transform = fishTransform(resize=(256,256), mean=None, std=None)
         transformed_img = transform(img, key='val')
+        transformed_img = transformed_img.to('cpu')
         input = transformed_img.unsqueeze(0)
 
         # prediction
