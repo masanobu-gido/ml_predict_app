@@ -8,7 +8,7 @@ from transforms import fishTransform
 from pathlib import Path
 
 app = Flask(__name__)
-
+"""
 class SoftMax(object):
     def __init__(self):
         pass
@@ -63,7 +63,7 @@ class MlModel(object):
         print("予測確率：{:.3f}".format(pred))
 
         return result, round(pred, 3)
-
+"""
 @app.route("/", methods=["GET", "POST"])
 def start():
     if request.method == "POST":
@@ -77,7 +77,7 @@ def start():
 def detail():
         return render_template("detail.html")
 
-
+"""
 @app.route("/nokoshima_clf", methods=["GET", "POST"])
 def nokoshima_clf():
     if request.method == "POST":
@@ -93,6 +93,6 @@ def nokoshima_clf():
         return render_template("nokoshima_clf.html", result=result, pred=pred)
     else:
         return render_template("nokoshima_clf.html", result=None, pred=None)
-
+"""
 if __name__ == "__main__":
     app.run(debug=False)
