@@ -36,7 +36,6 @@ class MlModel(object):
         with open(self.weight_path, "rb") as f:
            model = pickle5.load(f)
         
-        model = model.to('cpu')
         model.eval()
 
         # input image
