@@ -10,3 +10,4 @@ gunicorn==20.1.0
 
 -f https://download.pytorch.org/whl/torch_stable.html
 torch==1.13.0+cpu
+torchvision==0.9.0+cpu
