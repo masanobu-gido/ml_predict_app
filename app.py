@@ -33,7 +33,7 @@ class MlModel(object):
 
         # input and save image
         img = Image.open(image_file)
-        img.save("image/image.jpg")
+        #img.save("image/image.jpg")
 
         # transfrom
         transform = fishTransform(resize=(256,256), mean=None, std=None)
@@ -89,4 +89,4 @@ def nokoshima_clf():
         return render_template("nokoshima_clf.html", result=None, pred=None)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
